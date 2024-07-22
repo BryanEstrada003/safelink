@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
+import './App.css';
 
 interface User {
   email: string;
@@ -63,16 +64,18 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      {isAuthenticated ? (
-        <h1>Welcome, {currentUser}!</h1>
-      ) : isRegistering ? (
-        <RegisterForm onRegister={handleRegister} />
-      ) : (
-        <>
-          <LoginForm onLogin={handleLogin} />
-          <button onClick={() => setIsRegistering(true)}>Register</button>
-        </>
-      )}
+      <div className="container">
+        {isAuthenticated ? (
+          <h1>Welcome, {currentUser}!</h1>
+        ) : isRegistering ? (
+          <RegisterForm onRegister={handleRegister} />
+        ) : (
+          <>
+            <LoginForm onLogin={handleLogin} />
+            <button onClick={() => setIsRegistering(true)}>Register</button>
+          </>
+        )}
+      </div>
     </div>
   );
 };

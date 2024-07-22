@@ -1,27 +1,73 @@
-/* src/App.css */
-.App {
-  text-align: center;
-  margin-top: 50px;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333; /* Fondo oscuro */
 }
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 form {
-  display: inline-block;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  width: 500px; /* Ajusta el ancho según tus necesidades */
 }
 
-label {
-  display: block;
+form div {
+  margin-bottom: 10px;
+}
+
+form label {
   margin-bottom: 5px;
 }
 
 input {
-  width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-button {
-  width: 100%;
-  padding: 8px;
+form button,
+.container button {
+  width: 100%; /* O un tamaño fijo si prefieres */
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-top: 10px; /* Espacio superior para separar los botones */
+}
+
+form button {
+  margin-bottom: 10px; /* Espacio inferior para separar el botón de Login del siguiente */
+}
+
+form button:hover,
+.container button:hover {
+  background-color: #0056b3;
 }
