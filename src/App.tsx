@@ -67,7 +67,7 @@ const App: React.FC = () => {
     <div className="App">
       <div className="container">
         {isAuthenticated ? (
-          <Dashboard />
+          <Dashboard currentUser={currentUser} />
         ) : isRegistering ? (
           <RegisterForm onRegister={handleRegister} />
         ) : (
