@@ -65,6 +65,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
+      <img src="../public/logo.png" alt="logo" />
       <div className="container">
         {isAuthenticated ? (
           <Dashboard currentUser={currentUser} />
