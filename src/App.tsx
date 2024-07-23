@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
+import Datos from './components/Datos';
 import './App.css';
 
 interface User {
@@ -100,12 +101,14 @@ const App: React.FC = () => {
               currentUser={currentUser ? currentUser.user : null} 
               onNavigate={setCurrentSection} 
             />
-          ) : (
+          ) : currentSection === 'profile' ? (
             <Profile 
               user={currentUser!} 
               onUpdatePassword={handleUpdatePassword} 
               onNavigate={setCurrentSection} 
             />
+          ) : (
+            <Datos onNavigate={setCurrentSection} />
           )
         ) : isRegistering ? (
           <RegisterForm 
