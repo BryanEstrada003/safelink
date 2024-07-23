@@ -1,6 +1,8 @@
 // src/components/Dashboard.tsx
 import React from 'react';
 import './Dashboard.css';
+import logo from '../images/logo.png'; // Ruta correcta a la imagen
+
 
 interface DashboardProps {
   currentUser: string | null;
@@ -9,6 +11,10 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
   return (
     <div className="dashboard-container">
+      <center>
+        <img src={logo} alt="logo" />
+        <h1>SafeLink</h1>
+      </center>
       <h1>Welcome, {currentUser}</h1>
       <div className="dashboard">
         <div className="option">

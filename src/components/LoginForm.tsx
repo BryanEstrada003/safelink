@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logo from '../images/logo.png'; // Ruta correcta a la imagen
+
 
 interface LoginFormProps {
   onLogin: (email: string, password: string) => void;
@@ -21,6 +23,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <center> 
+        <img src={logo} alt="logo" /> 
+        <h1>SafeLink</h1>
+      </center>
       <div>
         <label htmlFor="email">Email:</label>
         <input

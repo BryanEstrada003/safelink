@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
@@ -65,12 +64,11 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <img src="../public/logo.png" alt="logo" />
       <div className="container">
         {isAuthenticated ? (
           <Dashboard currentUser={currentUser} />
         ) : isRegistering ? (
-          <RegisterForm onRegister={handleRegister} />
+          <RegisterForm onRegister={handleRegister} onBackToLogin={() => setIsRegistering(false)} />
         ) : (
           <>
             <LoginForm onLogin={handleLogin} />

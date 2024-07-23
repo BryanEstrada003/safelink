@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -6,11 +7,12 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white; /* Fondo oscuro */
+  background-color: white;
 }
 
 .App {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -24,15 +26,14 @@ body, html {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  max-width: 90%;
+  align-items: center;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ajusta el ancho al contenedor */
-  max-width: 500px; /* Ancho máximo para evitar estirarse demasiado */
-  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
 }
 
 form div {
@@ -48,12 +49,11 @@ input {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 form button,
 .container button {
-  width: 100%; /* O un tamaño fijo si prefieres */
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -62,41 +62,10 @@ form button,
   color: white;
   cursor: pointer;
   box-sizing: border-box;
-  margin-top: 10px; /* Espacio superior para separar los botones */
-}
-
-form button {
-  margin-bottom: 10px; /* Espacio inferior para separar el botón de Login del siguiente */
+  margin-top: 10px;
 }
 
 form button:hover,
 .container button:hover {
   background-color: #0056b3;
-}
-
-/* Media queries para hacer que el diseño sea responsive */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  form {
-    width: 100%; /* Asegura que el formulario ocupe todo el ancho del contenedor */
-    max-width: 100%; /* Evita un ancho fijo */
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
-
-  form {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  input, form button, .container button {
-    font-size: 14px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
-  }
 }

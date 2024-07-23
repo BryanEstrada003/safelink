@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import logo from '../images/logo.png'; // Ruta correcta a la imagen
 
 interface RegisterFormProps {
   onRegister: (email: string, password: string, username: string) => void;
+  onBackToLogin: () => void;
 }
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister, onBackToLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -27,6 +29,10 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <center>
+        <img src={logo} alt="logo" />
+        <h1>SafeLink</h1>
+      </center>
       <div>
         <label htmlFor="email">Email:</label>
         <input
@@ -65,8 +71,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
       </div>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Register</button>
+      <button type="button" onClick={onBackToLogin}>Back to Login</button>
     </form>
   );
 };
 
 export default RegisterForm;
+
+
