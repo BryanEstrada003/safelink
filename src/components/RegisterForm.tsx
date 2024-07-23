@@ -1,4 +1,3 @@
-// src/components/RegisterForm.tsx
 import React, { useState } from 'react';
 
 interface RegisterFormProps {
@@ -10,13 +9,19 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert('Passwords do not match');
+    if (!email || !password || !confirmPassword || !username) {
+      setError('Todos los campos son obligatorios');
       return;
     }
+    if (password !== confirmPassword) {
+      setError('Las contraseñas no coinciden');
+      return;
+    }
+    setError('');
     onRegister(email, password, username);
   };
 
@@ -58,6 +63,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );

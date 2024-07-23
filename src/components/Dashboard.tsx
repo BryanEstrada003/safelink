@@ -9,7 +9,7 @@ interface DashboardProps {
 const Dashboard: React.FC<DashboardProps> = ({ currentUser }) => {
   return (
     <div className="dashboard-container">
-      <h1 >Welcome, {currentUser}</h1>
+      <h1>Welcome, {currentUser}</h1>
       <div className="dashboard">
         <div className="option">
           <i className="icon user"></i>

@@ -1,4 +1,3 @@
-// src/components/LoginForm.tsx
 import React, { useState } from 'react';
 
 interface LoginFormProps {
@@ -8,9 +7,15 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !password) {
+      setError('Todos los campos son obligatorios');
+      return;
+    }
+    setError('');
     onLogin(email, password);
   };
 
@@ -34,9 +39,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Login</button>
     </form>
-
   );
 };
 
