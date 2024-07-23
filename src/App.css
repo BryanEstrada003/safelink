@@ -25,13 +25,16 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 90%;
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
-
 
 form {
   display: flex;
   flex-direction: column;
-  width: 500px; /* Ajusta el ancho según tus necesidades */
+  width: 100%; /* Ajusta el ancho al contenedor */
+  max-width: 500px; /* Ancho máximo para evitar estirarse demasiado */
+  box-sizing: border-box;
 }
 
 form div {
@@ -47,6 +50,7 @@ input {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
 }
 
 form button,
@@ -70,4 +74,31 @@ form button {
 form button:hover,
 .container button:hover {
   background-color: #0056b3;
+}
+
+/* Media queries para hacer que el diseño sea responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  form {
+    width: 100%; /* Asegura que el formulario ocupe todo el ancho del contenedor */
+    max-width: 100%; /* Evita un ancho fijo */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  input, form button, .container button {
+    font-size: 14px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+  }
 }
