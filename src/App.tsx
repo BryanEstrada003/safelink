@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
 import './App.css';
 
 interface User {
@@ -12,8 +13,9 @@ interface User {
 
 const App: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState<string | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isRegistering, setIsRegistering] = useState(false);
+  const [currentSection, setCurrentSection] = useState('dashboard');
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -24,7 +26,8 @@ const App: React.FC = () => {
 
       if (user) {
         setIsAuthenticated(true);
-        setCurrentUser(user.user);
+        setCurrentUser(user);
+        setCurrentSection('dashboard');
       } else {
         alert('Invalid credentials');
       }
@@ -62,13 +65,53 @@ const App: React.FC = () => {
     }
   };
 
+  const handleUpdatePassword = async (newPassword: string) => {
+    if (currentUser) {
+      try {
+        const response = await fetch('https://safelink-f6f00-default-rtdb.firebaseio.com/safelink.json');
+        const data: User[] = await response.json();
+
+        const updatedUserIndex = data.findIndex((user) => user.email === currentUser.email);
+        if (updatedUserIndex !== -1) {
+          data[updatedUserIndex].password = newPassword;
+
+          await fetch('https://safelink-f6f00-default-rtdb.firebaseio.com/safelink.json', {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+
+          setCurrentUser({ ...currentUser, password: newPassword });
+        }
+      } catch (error) {
+        console.error('Error updating password:', error);
+      }
+    }
+  };
+
   return (
     <div className="App">
       <div className="container">
         {isAuthenticated ? (
-          <Dashboard currentUser={currentUser} />
+          currentSection === 'dashboard' ? (
+            <Dashboard 
+              currentUser={currentUser ? currentUser.user : null} 
+              onNavigate={setCurrentSection} 
+            />
+          ) : (
+            <Profile 
+              user={currentUser!} 
+              onUpdatePassword={handleUpdatePassword} 
+              onNavigate={setCurrentSection} 
+            />
+          )
         ) : isRegistering ? (
-          <RegisterForm onRegister={handleRegister} onBackToLogin={() => setIsRegistering(false)} />
+          <RegisterForm 
+            onRegister={handleRegister} 
+            onBackToLogin={() => setIsRegistering(false)} 
+          />
         ) : (
           <>
             <LoginForm onLogin={handleLogin} />
