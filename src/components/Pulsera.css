@@ -1,0 +1,45 @@
+/* Pulsera.css */
+.pulsera-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header img {
+    cursor: pointer;
+    width: 24px;
+    /* Ajusta el tamaño aquí */
+    height: 24px;
+    /* Ajusta el tamaño aquí */
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.content img {
+    width: 200px;
+    /* Ajusta el tamaño aquí */
+    height: auto;
+    /* Ajusta el tamaño aquí */
+    margin-bottom: 20px;
+}
+
+.content h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
