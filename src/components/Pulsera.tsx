@@ -14,9 +14,9 @@ const Pulsera: React.FC<PulseraProps> = ({ onNavigate }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsConnecting(false);
-    }, Math.floor(Math.random() * (15000 - 10000 + 1)) + 10000); // Random time between 10 and 15 seconds
+    }, 12000); // Tiempo específico de 12 segundos
 
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar el componente
   }, []);
 
   return (
