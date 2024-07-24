@@ -36,7 +36,7 @@ const Dashboard: React.FC<DashboardProps> = ({ currentUser, onNavigate }) => {
           <i className="icon bracelet"></i>
           <span>Pulsera</span>
         </div>
-        <div className="option">
+        <div className="option" onClick={() => onNavigate('contraseñas')}>
           <i className="icon password"></i>
           <span>Contraseñas</span>
         </div>

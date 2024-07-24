@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Datos from './components/Datos';
 import Pulsera from './components/Pulsera';
+import Contraseñas from './components/Contraseñas';
 import './App.css';
 
 interface User {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isRegistering, setIsRegistering] = useState(false);
   const [currentSection, setCurrentSection] = useState('dashboard');
+  const [fakePassword, setFakePassword] = useState('');
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -93,6 +95,10 @@ const App: React.FC = () => {
     }
   };
 
+  const handleUpdateFakePassword = (newFakePassword: string) => {
+    setFakePassword(newFakePassword);
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -112,6 +118,12 @@ const App: React.FC = () => {
             <Datos onNavigate={setCurrentSection} />
           ) : currentSection === 'pulsera' ? (
             <Pulsera onNavigate={setCurrentSection} />
+          ) : currentSection === 'contraseñas' ? (
+            <Contraseñas 
+              currentUser={currentUser!} 
+              onNavigate={setCurrentSection} 
+              onUpdateFakePassword={handleUpdateFakePassword} 
+            />
           ) : null
         ) : isRegistering ? (
           <RegisterForm 

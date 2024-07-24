@@ -1,0 +1,39 @@
+/* Contraseñas.css */
+.contraseñas-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.header img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+p {
+    margin-top: 10px;
+    color: green;
+}
