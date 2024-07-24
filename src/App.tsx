@@ -19,7 +19,7 @@ const App: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [isRegistering, setIsRegistering] = useState(false);
   const [currentSection, setCurrentSection] = useState('dashboard');
-  const [fakePassword, setFakePassword] = useState('');
+  const [, setFakePassword] = useState('');
 
   const handleLogin = async (email: string, password: string) => {
     try {
