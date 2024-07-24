@@ -4,7 +4,7 @@ import RegisterForm from './components/RegisterForm';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Datos from './components/Datos';
-import Pulsera from './components/Pulsera'; // Importa el nuevo componente
+import Pulsera from './components/Pulsera';
 import './App.css';
 
 interface User {
@@ -110,7 +110,7 @@ const App: React.FC = () => {
             />
           ) : currentSection === 'datos' ? (
             <Datos onNavigate={setCurrentSection} />
-          ) : currentSection === 'pulsera' ? ( // Nueva sección de Pulsera
+          ) : currentSection === 'pulsera' ? (
             <Pulsera onNavigate={setCurrentSection} />
           ) : null
         ) : isRegistering ? (
